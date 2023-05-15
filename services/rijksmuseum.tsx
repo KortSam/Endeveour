@@ -25,7 +25,7 @@ export const searchArtworks = async (
   query: string,
   sortOption: string
 ): Promise<Artwork[]> => {
-  let url = `https://www.rijksmuseum.nl/api/en/collection?key=${RIJKS_API_KEY}&ps=100`;
+  let url = `https://www.rijksmuseum.nl/api/en/collection?key=${RIJKS_API_KEY}&ps=50`;
   if (sortOption) url += `&s=${sortOption}`;
   if (query) url += `&q=${query}`;
   const res = await fetch(url);
