@@ -21,6 +21,7 @@ Hence i created a grid system for searching artworks and then a detail page. Whi
 ### Nice editions
 I added a loading icon for when The detail page is loading.  
 Added a variety of filter options.  
+Added small amounts of animations using framer-motion  
 Used typescript.
 
 
