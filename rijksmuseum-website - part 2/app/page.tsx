@@ -2,7 +2,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { searchArtworks, Artwork } from "@/services/rijksmuseum";
 import Link from "next/link";
-
+import { motion } from 'framer-motion';
 export default function Home() {
   const [query, setQuery] = useState("");
   const [sortOption, setSortOption] = useState("");
@@ -17,6 +17,12 @@ export default function Home() {
   const handleSortChange = async (event: ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
     setSortOption(event.target.value);
+  };
+
+  const fadeIn = {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: { opacity: 1, scale: 1 },
+    transition: { duration: 1.5 }
   };
 
   return (
@@ -50,9 +56,12 @@ export default function Home() {
       </form>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {artworks.map((artwork) => (
-          <div
+          <motion.div
             key={artwork.id}
             className="border-gray-300 border-2 p-4 rounded-md"
+            variants={fadeIn}
+            initial="initial"
+            animate="animate"
           >
             <Link href={`/pages/artwork/${artwork.objectNumber}`}>
               <img
@@ -62,7 +71,7 @@ export default function Home() {
               />
               <h2 className="text-red-500">{artwork.title}</h2>
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
